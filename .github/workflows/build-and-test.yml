@@ -8,15 +8,23 @@ on:
     branches: [ "core" ]
 
 jobs:
-
-  build:
+  build-linux:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    # - uses: android-actions/setup-android@v3
-    - uses: actions/setup-go@v4
-    - run: go version
-    - run: go get .
-    - run: sudo apt-get install gcc libgl1-mesa-dev xorg-dev
-    - run: go build -v ./...
-    - run: go test -v ./...
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v4
+      - run: go version
+      - run: go get .
+      - run: sudo apt-get install gcc libgl1-mesa-dev xorg-dev
+      - run: go build -v ./...
+      - run: go test -v ./...
+  build-android:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v4
+      - run: go version
+      - run: go get .
+      - uses: android-actions/setup-android@v3
+      - run: make sigi_gui.apk
