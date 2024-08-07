@@ -26,5 +26,6 @@ jobs:
       - uses: actions/setup-go@v4
       - run: go version
       - run: go get .
+      - { uses: actions/setup-java@v4, with: { distribution: 'temurin', java-version: '21' } }
       - uses: android-actions/setup-android@v3
       - run: make sigi_gui.apk
