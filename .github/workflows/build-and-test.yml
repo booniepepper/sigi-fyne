@@ -26,6 +26,7 @@ jobs:
       - uses: actions/setup-go@v4
       - run: go version
       - run: go get .
+      - run: go get fyne.io/fyne/v2@latest
       - { uses: actions/setup-java@v4, with: { distribution: 'temurin', java-version: '21' } }
       - uses: android-actions/setup-android@v3
       - run: make sigi_gui.apk
