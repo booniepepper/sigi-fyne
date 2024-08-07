@@ -13,8 +13,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
+    # - uses: android-actions/setup-android@v3
     - uses: actions/setup-go@v4
     - run: go version
     - run: go get .
+    - run: sudo apt-get install libxcursor-dev
     - run: go build -v ./...
     - run: go test -v ./...
