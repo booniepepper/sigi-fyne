@@ -17,6 +17,6 @@ jobs:
     - uses: actions/setup-go@v4
     - run: go version
     - run: go get .
-    - run: sudo apt-get install libxcursor-dev libxrandr-dev
+    - run: sudo apt-get install libxcursor-dev libxinerama-dev libxrandr-dev
     - run: go build -v ./...
     - run: go test -v ./...
